@@ -1,0 +1,77 @@
+.seatSelectionApp {
+    background-image: url(../img/bgmovie.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    font-family: 'PT Serif', serif;
+}
+
+.seatSelectionApp .container {
+    padding: 3rem 0;
+}
+
+.seatSelectionApp .container .app__title {
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    font-size: 2.8rem;
+}
+
+.seatSelectionApp .container .appContent {
+    text-align: center;
+    width: 80%;
+    height: auto;
+    background: rgba(128, 128, 128, 0.8);
+    margin: 0 auto;
+    color: white;
+}
+
+.seatSelectionApp .container .appContent .userInfo  .app__subTitle {
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+.seatSelectionApp .container .appContent .userInfo .user__inputGroup {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.seatSelectionApp .container .appContent .userInfo .app__text {
+    margin-bottom: 0;
+}
+
+.seatSelectionApp .container .appContent .userInfo .user__inputGroup .user__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seatSelectionApp .container .appContent .userInfo .app__text {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+}
+
+.seatSelectionApp .container .appContent .userInfo .app__text span {
+    color: red;
+}
+
+.seatSelectionApp .container .appContent .userInfo .user__inputGroup .user__input input {
+    margin-left: 1rem;
+    height: 2.2rem;
+    background: transparent;
+    border: 1px solid white;
+}
+
+.seatSelectionApp .container .appContent .userInfo p:nth-child(3) {
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-style: italic;
+    color: bisque;
+}
+
+.seatSelectionApp .container .appContent .userInfo .btnSelect .btn {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+}
