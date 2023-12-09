@@ -6,7 +6,7 @@ export default function Seat() {
     console.log("seatList", seatList);
 
     // TODO: Render seat chart
-    const renderSeatChart = () => {
+    const renderseatSelection = () => {
         return seatList.map((seatRow, index) => {
             // Print the first row
             if (seatRow.hang === "") {
@@ -29,7 +29,7 @@ export default function Seat() {
 
     return (
         <>
-            {renderSeatChart()}
+            {renderseatSelection()}
         </>
     )
 }

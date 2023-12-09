@@ -30,6 +30,11 @@
     color: white;
 }
 
+.btnCustom .btn {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+}
+
 .seatSelectionApp .container .appContent .userInfo  .app__subTitle {
     text-transform: capitalize;
     margin-bottom: 1rem;
@@ -50,11 +55,6 @@
     align-items: center;
 }
 
-.seatSelectionApp .container .appContent .userInfo .app__text {
-    text-transform: capitalize;
-    font-size: 1.2rem;
-}
-
 .seatSelectionApp .container .appContent .userInfo .app__text span {
     color: red;
 }
@@ -73,16 +73,16 @@
     color: bisque;
 }
 
-.seatSelectionApp .container .appContent .userInfo .btnSelect .btn {
+.seatSelectionApp .container .appContent .userInfo .btnCustom .btn {
     text-transform: capitalize;
     font-size: 1.2rem;
 }
 
-.seatSelectionApp .container .appContent .seatChart {
+.seatSelectionApp .container .appContent .seatSelection {
     padding: 3rem 0;
 }
 
-.seatSelectionApp .container .appContent .seatChart .app__subTitle {
+.seatSelectionApp .container .appContent .seatSelection .app__subTitle {
     display: inline;
     background-color: white;
     color: black;
@@ -90,21 +90,21 @@
     font-size: 1.2rem;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__note {
+.seatSelectionApp .container .appContent .seatSelection .seat__note {
     margin-top: 1.5rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text {
+.seatSelectionApp .container .appContent .seatSelection .seat__note .note__item .app__text {
     margin-bottom: 0;
     display: inline;
     position: relative;
     text-transform: capitalize;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text::before {
+.seatSelectionApp .container .appContent .seatSelection .seat__note .note__item .app__text::before {
     position: absolute;
     content: "";
     width: 25px;
@@ -114,7 +114,7 @@
     top: 0;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text.empty::before {
+.seatSelectionApp .container .appContent .seatSelection .seat__note .note__item .app__text.empty::before {
     width: 30px;
     height: 24px;
     border-top-left-radius: 8px;
@@ -122,7 +122,7 @@
     background: white;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text.selected::before {
+.seatSelectionApp .container .appContent .seatSelection .seat__note .note__item .app__text.selected::before {
     background: #65B741;
     width: 30px;
     height: 24px;
@@ -130,7 +130,7 @@
     border-top-left-radius: 8px;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text.reserved::before {
+.seatSelectionApp .container .appContent .seatSelection .seat__note .note__item .app__text.reserved::before {
     background: #BE3144;
     width: 30px;
     height: 24px;
@@ -138,11 +138,12 @@
     border-top-left-radius: 8px;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__chart {
+.seatSelectionApp .container .appContent .seatSelection .seat__chart {
     margin: 3rem 0;
+    margin-bottom: 0;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__screen {
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__screen {
     width: 80%;
     margin: 0 auto;
     border-bottom: 50px solid #FFA33C;
@@ -153,7 +154,7 @@
     position: relative;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__screen .app__text {
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__screen .app__text {
     margin-bottom: 0;
     position: absolute;
     top: 50%;
@@ -163,13 +164,13 @@
     font-size: 1.2rem;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__display {
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__display {
     width: 70%;
     margin: 0 auto;
     margin-top: 1rem;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__display .seat__row {
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__display .seat__row {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
     grid-gap: 20px;
@@ -179,11 +180,35 @@
     color: #FFA33C;
 }
 
-.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__display .seat__row .seatCustom {
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__display .seat__row .seatCustom {
     background: white;
     color: white;
     width: 30px;
     height: 24px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+}
+
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__display .btnConfirm {
+    margin-top: 2rem;
+}
+
+/* SEAT CONFIRM */
+.seatSelectionApp .container .appContent .seatConfirm {
+    padding-bottom: 3rem;
+}
+
+.seatSelectionApp .container .appContent .seatConfirm .table {
+    width: 80%;
+    margin: 0 auto;
+}
+
+table, th, td {
+    border: 3px solid rgba(128, 128, 128, 0.8);
+    border-collapse: collapse;
+}
+
+th, td {
+    background-color: white;
+    color: black;
 }

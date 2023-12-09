@@ -24,7 +24,7 @@ export default function UserInfo() {
             <span>* </span>
             Please fill required fields
         </p>
-        <div className='btnSelect'>
+        <div className='btnCustom btnSelect'>
             <button className='btn btn-light'>seat selection</button>
         </div>
     </>
