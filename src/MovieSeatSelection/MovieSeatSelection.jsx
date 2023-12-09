@@ -1,6 +1,7 @@
 import React from 'react';
 import "./assets/css/style.css";
 import UserInfo from './UserInfo';
+import SeatSelection from './SeatSelection';
 
 export default function MovieSeatSelection() {
     return (
@@ -10,6 +11,10 @@ export default function MovieSeatSelection() {
                 <div className='appContent'>
                     <div className='userInfo py-5'>
                         <UserInfo />
+                    </div>
+                    <hr />
+                    <div className='seatChart'>
+                        <SeatSelection />
                     </div>
                 </div>
             </div>

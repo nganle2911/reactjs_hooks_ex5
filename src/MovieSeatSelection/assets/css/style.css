@@ -3,7 +3,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    background-attachment: fixed;
     height: 100vh;
+    overflow-y: auto;
     font-family: 'PT Serif', serif;
 }
 
@@ -24,7 +26,7 @@
     width: 80%;
     height: auto;
     background: rgba(128, 128, 128, 0.8);
-    margin: 0 auto;
+    margin: 3rem auto;
     color: white;
 }
 
@@ -74,4 +76,114 @@
 .seatSelectionApp .container .appContent .userInfo .btnSelect .btn {
     text-transform: capitalize;
     font-size: 1.2rem;
+}
+
+.seatSelectionApp .container .appContent .seatChart {
+    padding: 3rem 0;
+}
+
+.seatSelectionApp .container .appContent .seatChart .app__subTitle {
+    display: inline;
+    background-color: white;
+    color: black;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__note {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text {
+    margin-bottom: 0;
+    display: inline;
+    position: relative;
+    text-transform: capitalize;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text::before {
+    position: absolute;
+    content: "";
+    width: 25px;
+    height: 25px;
+    background: black;
+    left: -35px;
+    top: 0;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text.empty::before {
+    width: 30px;
+    height: 24px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: white;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text.selected::before {
+    background: #65B741;
+    width: 30px;
+    height: 24px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__note .note__item .app__text.reserved::before {
+    background: #BE3144;
+    width: 30px;
+    height: 24px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__chart {
+    margin: 3rem 0;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__screen {
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 50px solid #FFA33C;
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    height: 0;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__screen .app__text {
+    margin-bottom: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 42%);
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__display {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__display .seat__row {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-gap: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #FFA33C;
+}
+
+.seatSelectionApp .container .appContent .seatChart .seat__chart .seat__display .seat__row .seatCustom {
+    background: white;
+    color: white;
+    width: 30px;
+    height: 24px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
