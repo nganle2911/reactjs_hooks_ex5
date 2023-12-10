@@ -1,12 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Seat() {
-    let seatList = useSelector(state => state.movieSeatReducer.seatArr);
-    // console.log("seatList", seatList);
+    const seatList = useSelector(state => state.movieSeatReducer.seatArr);
 
+    // TODO: Handle seat selection
+    
+    
     // TODO: Render seat chart
-    const renderseatSelection = () => {
+    const renderSeat = () => {
         return seatList.map((seatRow, index) => {
             // Print the first row
             if (seatRow.hang === "") {
@@ -29,11 +31,11 @@ export default function Seat() {
                 })}
             </div>
         })
-    }
+    };
 
     return (
         <>
-            {renderseatSelection()}
+            {renderSeat()}
         </>
     )
 }

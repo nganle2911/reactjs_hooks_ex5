@@ -9,7 +9,7 @@ export default function UserInfo() {
 
     // TODO: Handle the change of user's information 
     const handleChangeInfo = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         dispatch(setUserInfo({ name, value }));
     };
 
