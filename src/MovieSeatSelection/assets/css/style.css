@@ -47,6 +47,8 @@
 
 .seatSelectionApp .container .appContent .userInfo .app__text {
     margin-bottom: 0;
+    text-transform: capitalize;
+    font-size: 1.2rem;
 }
 
 .seatSelectionApp .container .appContent .userInfo .user__inputGroup .user__input {
@@ -83,11 +85,10 @@
 }
 
 .seatSelectionApp .container .appContent .seatSelection .app__subTitle {
-    display: inline;
-    background-color: white;
+    background-color: #FFA33C;
     color: black;
     text-transform: capitalize;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .seatSelectionApp .container .appContent .seatSelection .seat__note {
@@ -201,6 +202,10 @@
 .seatSelectionApp .container .appContent .seatConfirm .table {
     width: 80%;
     margin: 0 auto;
+}
+
+.seatSelectionApp .container .appContent .seatConfirm .table th {
+    text-transform: capitalize;
 }
 
 table, th, td {

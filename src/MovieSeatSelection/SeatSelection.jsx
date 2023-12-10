@@ -4,7 +4,7 @@ import Seat from './Seat'
 export default function SeatSelection() {
     return (
         <>
-            <p className='app__subTitle'>please select your seat !</p>
+            <p className='app__subTitle' id='notiSeat' style={{display: "none"}}>please select your seat !</p>
             <div className='seat__note'>
                 <div className='note__item'>
                     <p className='app__text empty'>empty seat</p>

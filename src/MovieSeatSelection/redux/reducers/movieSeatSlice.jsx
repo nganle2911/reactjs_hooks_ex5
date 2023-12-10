@@ -3,16 +3,33 @@ import { seatArr } from '../../utils/data';
 
 const initialState = {
     seatArr: seatArr,
-    nameUser: "",
-    numOfSeat: 0
+    userInfo: {
+      username: "",
+      numOfSeat: ""
+    }
 }
 
 const movieSeatSlice = createSlice({
   name: "movieSeatSlice",
   initialState,
-  reducers: {}
+  reducers: {
+    // todo: update state userInfo
+    setUserInfo: (state, action) => {
+      const {name, value} = action.payload;
+      return {
+        ...state, // spread the whole state
+        userInfo: {
+          ...state.userInfo,
+          [name]: value
+        }
+      }
+    },
+    // todo: reset form
+    resetForm: (state) => {
+      return initialState;
+    }
+  }
 });
 
-export const {} = movieSeatSlice.actions
-
-export default movieSeatSlice.reducer
+export const { setUserInfo, resetForm } = movieSeatSlice.actions;
+export default movieSeatSlice.reducer;
