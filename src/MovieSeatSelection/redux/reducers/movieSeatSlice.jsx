@@ -29,13 +29,12 @@ const movieSeatSlice = createSlice({
     resetForm: (state) => {
       return initialState;
     },
-    // todo: get id of seat
+    // todo: update seat 
     setSeat: (state, action) => {
-      // To find index of seat in array 2D
-      
+      state.seat = action.payload;
     }
   }
 });
 
-export const { setUserInfo, resetForm,  } = movieSeatSlice.actions;
+export const { setUserInfo, resetForm, setSeat } = movieSeatSlice.actions;
 export default movieSeatSlice.reducer;
