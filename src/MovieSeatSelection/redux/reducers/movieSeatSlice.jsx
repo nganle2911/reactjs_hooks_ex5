@@ -7,7 +7,8 @@ const initialState = {
       username: "",
       numOfSeat: ""
     },
-    seat: null
+    seat: null,
+    statusSeat: false
 }
 
 const movieSeatSlice = createSlice({
@@ -25,14 +26,23 @@ const movieSeatSlice = createSlice({
         }
       }
     },
+
     // todo: reset form
     resetForm: (state) => {
       return initialState;
     },
-    // todo: update seat 
+
+    // todo: change color seat 
     setSeat: (state, action) => {
-      state.seat = action.payload;
+      const newSeat = action.payload;
+      console.log("newSeat - reducer", newSeat);
+      return {
+        ...state, 
+        statusSeat: !newSeat.daDat,
+        seat: {...newSeat, daDat: state.statusSeat}
+      }
     }
+
   }
 });
 

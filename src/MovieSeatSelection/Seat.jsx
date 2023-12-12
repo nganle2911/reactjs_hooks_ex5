@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSeat } from './redux/reducers/movieSeatSlice';
 
 export default function Seat() {
+    // hooks 
     const seatList = useSelector(state => state.movieSeatReducer.seatArr);
     console.log(seatList);
     const selectedSeat = useSelector(state => state.movieSeatReducer.seat);
+    console.log("selectedSeat - useSelector", selectedSeat);
+    const statusSeat = useSelector(state => state.movieSeatReducer.statusSeat);
+    console.log("statusSeat - useSelector", statusSeat);
     const dispatch = useDispatch();
 
     // TODO: Handle seat selection
-    const handleSeat = (seatInfo) => {
-        dispatch(setSeat(seatInfo));
-        console.log(seatInfo);
+    const handleSeat = (seatSelected, status) => {
+        console.log("seatSelected & status -  handleSeat", seatSelected, status);
+        dispatch(setSeat(seatSelected, status));
     }
 
 
@@ -33,11 +37,11 @@ export default function Seat() {
             return <div className='seat__row' key={index}>
                 <div className='seat__item'>{seatRow.hang}</div>
                 {seatRow.danhSachGhe.map((seat, indexSeat) => {
-                    const seatInfo = {
-                        seatNumber: seat.soGhe
-                    };
-                    return <div className='seat__item seatCustom' key={indexSeat} onClick={() => {
-                        handleSeat(seatInfo);
+                    const isSeatSelected = !seat.daDat;
+
+                    return <div className="seat__item seatCustom" key={indexSeat} onClick={() => {
+                        handleSeat(seat, isSeatSelected);
+                        console.log(seat, isSeatSelected)
                     }}>
                         <span className='seat__value' style={{ display: "none" }}>{seat.soGhe.substr(1)}</span>
                     </div>
