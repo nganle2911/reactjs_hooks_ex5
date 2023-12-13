@@ -188,6 +188,19 @@
     height: 24px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    cursor: pointer;
+}
+
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__display .seat__row .seatCustom.selected {
+    background: #65B741;
+}
+
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__display .seat__row .seatCustom.reserved {
+    background: #BE3144;
+}
+
+.seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__display .seat__row .seatCustom.disabled {
+    pointer-events: none;
 }
 
 .seatSelectionApp .container .appContent .seatSelection .seat__chart .seat__display .btnConfirm {

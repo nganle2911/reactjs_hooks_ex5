@@ -19,7 +19,6 @@ export default function UserInfo() {
             alert("Please enter your Name and Number of Seats !");
         } else {
             console.log(userInfo);
-            dispatch(resetForm());
             document.getElementById("notiSeat").style.display = "inline-block";
         }
     };

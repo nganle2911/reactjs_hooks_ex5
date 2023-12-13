@@ -1,8 +1,8 @@
 import React from 'react';
 import "./assets/css/style.css";
 import UserInfo from './UserInfo';
-import SeatSelection from './SeatSelection';
 import SeatConfirm from './SeatConfirm';
+import SeatRow from './SeatRow';
 
 export default function MovieSeatSelection() {
     return (
@@ -15,7 +15,7 @@ export default function MovieSeatSelection() {
                     </div>
                     <hr />
                     <div className='seatSelection'>
-                        <SeatSelection />
+                        <SeatRow />
                     </div>
                     <div className='seatConfirm'>
                         <SeatConfirm />

@@ -1,14 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { seatArr } from '../../utils/data';
 
 const initialState = {
-    seatArr: seatArr,
     userInfo: {
       username: "",
       numOfSeat: ""
     },
-    seat: null,
-    statusSeat: false
+    selectedSeatArr: []
 }
 
 const movieSeatSlice = createSlice({
@@ -19,7 +16,7 @@ const movieSeatSlice = createSlice({
     setUserInfo: (state, action) => {
       const {name, value} = action.payload;
       return {
-        ...state, // spread the whole state
+        ...state,
         userInfo: {
           ...state.userInfo,
           [name]: value
@@ -31,20 +28,10 @@ const movieSeatSlice = createSlice({
     resetForm: (state) => {
       return initialState;
     },
-
-    // todo: change color seat 
-    setSeat: (state, action) => {
-      const newSeat = action.payload;
-      console.log("newSeat - reducer", newSeat);
-      return {
-        ...state, 
-        statusSeat: !newSeat.daDat,
-        seat: {...newSeat, daDat: state.statusSeat}
-      }
-    }
-
+    
+    
   }
 });
 
-export const { setUserInfo, resetForm, setSeat } = movieSeatSlice.actions;
+export const { setUserInfo, resetForm } = movieSeatSlice.actions;
 export default movieSeatSlice.reducer;
