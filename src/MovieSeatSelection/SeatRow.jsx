@@ -7,9 +7,7 @@ import { cloneDeep } from 'lodash';
 export default function SeatRow() {
 
     let [seatList, setSeatList] = useState(seatArr);
-    console.log("seatList", seatList);
     let arrSelectedSeat = useSelector(state => state.movieSeatReducer.selectedSeatArr);
-    console.log("arrSelectedSeat", arrSelectedSeat);
     const dispatch = useDispatch();
 
     // TODO: Render seat chart
@@ -64,7 +62,6 @@ export default function SeatRow() {
         let indexSelectedSeat = arrSelectedSeat.findIndex((seatSelecting) => {
             return seatSelecting.soGhe === selectedSeat.soGhe;
         });
-        console.log(indexSelectedSeat);
 
         if (indexSelectedSeat !== -1) {
             newSelectedSeatArr.splice(indexSelectedSeat, 1);
@@ -80,17 +77,13 @@ export default function SeatRow() {
 
     // TODO: Handle confirm seat selection
     let handleConfirmButton = () => {
-        console.log("hello");
         let newSeatSelectedArr = cloneDeep(arrSelectedSeat);
-        console.log("newSeatSelectedArr", newSeatSelectedArr);
         let newSeatList = [...seatList];
 
         for (let i = 0; i < newSeatSelectedArr.length; i++) {
             let status = true;
             newSeatSelectedArr[i].daDat = status;
         }
-
-        console.log("new arr", newSeatSelectedArr);
 
         newSeatList = newSeatList.map((row) => {
             let updatedSeats = row.danhSachGhe.map((seat) => {
@@ -99,7 +92,6 @@ export default function SeatRow() {
                 });
 
                 if (updatedSeatIndex !== -1) {
-                    console.log("bingo");
                     return newSeatSelectedArr[updatedSeatIndex];
                 }
 
@@ -109,7 +101,6 @@ export default function SeatRow() {
             return { ...row, danhSachGhe: updatedSeats };
         });
 
-        console.log("new updated seatlist", newSeatList);
         setSeatList(newSeatList);
         dispatch(setConfirmSelection(newSeatList));
 
@@ -166,7 +157,7 @@ export default function SeatRow() {
                 <h3 className='app__subTitle' style={{display: "inline-block"}}>Your Seats Selection</h3>
                 <h4>
                     Numbers of seat that you chose: 
-                    <span className='app__textCustom'>{arrSelectedSeat.length}</span>
+                    <span className='app__textCustom text-warning mx-2'>{arrSelectedSeat.length}</span>
                 </h4>
                 <table className='table'>
                     <tr>
