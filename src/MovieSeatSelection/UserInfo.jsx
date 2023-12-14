@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetForm, setUserInfo } from './redux/reducers/movieSeatSlice';
 
@@ -9,8 +9,9 @@ export default function UserInfo() {
 
     // TODO: Handle the change of user's information 
     const handleChangeInfo = (e) => {
-        const { name, value } = e.target;
-        dispatch(setUserInfo({ name, value }));
+        let { name, value } = e.target;
+        let data = {...userInfo, [name]: value};
+        dispatch(setUserInfo(data));
     };
 
     // TODO: Handle button seat selection
@@ -63,3 +64,4 @@ export default function UserInfo() {
         </>
     )
 }
+ */

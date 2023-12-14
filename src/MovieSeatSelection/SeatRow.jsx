@@ -1,13 +1,16 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { seatArr } from './data/data';
+import { setConfirmSelection, setSelectedSeatArr } from './redux/reducers/movieSeatSlice';
+import { cloneDeep } from 'lodash';
 
 export default function SeatRow() {
 
-    const seatList = seatArr;
+    let [seatList, setSeatList] = useState(seatArr);
     console.log("seatList", seatList);
-    const arrSelectedSeat = useSelector(state => state.movieSeatReducer.selectedSeatArr);
+    let arrSelectedSeat = useSelector(state => state.movieSeatReducer.selectedSeatArr);
     console.log("arrSelectedSeat", arrSelectedSeat);
+    const dispatch = useDispatch();
 
     // TODO: Render seat chart
     const renderSeat = () => {
@@ -37,19 +40,16 @@ export default function SeatRow() {
                         disabled = "disabled";
                     }
 
-                    {/* check seat's status => findIndex
-                        - if seatClicked existed in arrSelectedSeat => remove
-                        - if seatClicked doesn't exist in arrSelectedSeat => push */}
-                    let indexSeatSelected = arrSelectedSeat.findIndex((seatClicked) => {
-                        return seatClicked.soGhe === seat.soGhe;
-                    }); 
-                    if (indexSeatSelected !== -1) {
-                        cssStatusSeat = "selected";
+                    let cssSelectingSeatStatus = "";
+                    let indexSelectingSeat = arrSelectedSeat.findIndex((selectingSeat) => {
+                        return selectingSeat.soGhe === seat.soGhe;
+                    });
+                    if (indexSelectingSeat !== -1) {
+                        cssSelectingSeatStatus = "selected";
                     }
 
-
-                    return <div className={`seat__item seatCustom ${cssStatusSeat} ${disabled}`} key={indexSeat} onClick={() => {
-                        
+                    return <div className={`seat__item seatCustom ${cssStatusSeat} ${disabled} ${cssSelectingSeatStatus}`} key={indexSeat} onClick={() => {
+                        handleSelectedSeat(seat);
                     }}>
                         <span className='seat__value' style={{ display: "none" }}>{seat.soGhe.substr(1)}</span>
                     </div>
@@ -57,6 +57,69 @@ export default function SeatRow() {
             </div>
         })
     };
+
+    // TODO: Handle selected seat
+    let handleSelectedSeat = (selectedSeat) => {
+        let newSelectedSeatArr = [...arrSelectedSeat];
+        let indexSelectedSeat = arrSelectedSeat.findIndex((seatSelecting) => {
+            return seatSelecting.soGhe === selectedSeat.soGhe;
+        });
+        console.log(indexSelectedSeat);
+
+        if (indexSelectedSeat !== -1) {
+            newSelectedSeatArr.splice(indexSelectedSeat, 1);
+        } else {
+            newSelectedSeatArr.push(selectedSeat);
+        }
+
+        dispatch(setSelectedSeatArr(newSelectedSeatArr));
+
+        arrSelectedSeat = newSelectedSeatArr;
+        return [...arrSelectedSeat];
+    }
+
+    // TODO: Handle confirm seat selection
+    let handleConfirmButton = () => {
+        console.log("hello");
+        let newSeatSelectedArr = cloneDeep(arrSelectedSeat);
+        console.log("newSeatSelectedArr", newSeatSelectedArr);
+        let newSeatList = [...seatList];
+
+        for (let i = 0; i < newSeatSelectedArr.length; i++) {
+            let status = true;
+            newSeatSelectedArr[i].daDat = status;
+        }
+
+        console.log("new arr", newSeatSelectedArr);
+
+        newSeatList = newSeatList.map((row) => {
+            let updatedSeats = row.danhSachGhe.map((seat) => {
+                let updatedSeatIndex = newSeatSelectedArr.findIndex((selectedSeat) => {
+                    return selectedSeat.soGhe === seat.soGhe;
+                });
+
+                if (updatedSeatIndex !== -1) {
+                    console.log("bingo");
+                    return newSeatSelectedArr[updatedSeatIndex];
+                }
+
+                return seat;
+            })
+
+            return { ...row, danhSachGhe: updatedSeats };
+        });
+
+        console.log("new updated seatlist", newSeatList);
+        setSeatList(newSeatList);
+        dispatch(setConfirmSelection(newSeatList));
+    }
+
+    // TODO: Render confirmation form
+    let renderConfirmForm = () => {
+        return arrSelectedSeat.map((seat, index) => {
+            
+        })
+    }
 
 
     return (
@@ -81,9 +144,23 @@ export default function SeatRow() {
                     {renderSeat()}
 
                     <div className='btnCustom btnConfirm'>
-                        <button className='btn btn-light'>confirm</button>
+                        <button className='btn btn-light' onClick={() => {
+                            handleConfirmButton();
+                        }}>confirm</button>
                     </div>
                 </div>
+            </div>
+
+            <div className='seatConfirm'>
+                <table className='table'>
+                    <tr>
+                        <th>name</th>
+                        <th>number of seats</th>
+                        <th>seats</th>
+                        <th>total price</th>
+                    </tr>
+
+                </table>
             </div>
         </>
     )
