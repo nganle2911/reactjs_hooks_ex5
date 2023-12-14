@@ -31,7 +31,7 @@ const movieSeatSlice = createSlice({
 
     // todo: handle confirm seat selection
     setConfirmSelection: (state, action) => {
-      state = action.payload;
+      state = action.payload
     }
   }
 });

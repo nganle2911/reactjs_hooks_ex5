@@ -112,13 +112,24 @@ export default function SeatRow() {
         console.log("new updated seatlist", newSeatList);
         setSeatList(newSeatList);
         dispatch(setConfirmSelection(newSeatList));
+
+        document.getElementById("notiConfirm").style.display = "block";
     }
 
     // TODO: Render confirmation form
-    let renderConfirmForm = () => {
-        return arrSelectedSeat.map((seat, index) => {
-            
-        })
+    let renderConfirmForm = (selectedSeats) => {
+        let totalAmount = 0; 
+        let seatElements = selectedSeats.map((seat, index) => {
+            totalAmount += seat.gia; 
+            return (
+                <tr key={index}>
+                    <td>{seat.soGhe}</td>
+                    <td>{seat.gia}</td>
+                </tr>
+            );
+        });
+
+        return {seatElements, totalAmount}
     }
 
 
@@ -151,15 +162,22 @@ export default function SeatRow() {
                 </div>
             </div>
 
-            <div className='seatConfirm'>
+            <div className='seatConfirm' id='notiConfirm' style={{display: "none"}}>
+                <h3 className='app__subTitle' style={{display: "inline-block"}}>Your Seats Selection</h3>
+                <h4>
+                    Numbers of seat that you chose: 
+                    <span className='app__textCustom'>{arrSelectedSeat.length}</span>
+                </h4>
                 <table className='table'>
                     <tr>
-                        <th>name</th>
-                        <th>number of seats</th>
-                        <th>seats</th>
-                        <th>total price</th>
+                        <th>seat</th>
+                        <th>price</th>
                     </tr>
-
+                    {renderConfirmForm(arrSelectedSeat).seatElements}
+                    <tr>
+                        <th>total amount</th>
+                        <th>{renderConfirmForm(arrSelectedSeat).totalAmount}</th>
+                    </tr>
                 </table>
             </div>
         </>
